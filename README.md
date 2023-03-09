@@ -2,16 +2,33 @@
 
 [![npm shield](https://img.shields.io/npm/v/@fern-api/chkk)](https://www.npmjs.com/package/@fern-api/chkk)
 
-The {Company} Node.js library provides access to the Chkk API from JavaScript/TypeScript.
+The Chkk Node.js library provides access to the Chkk API from JavaScript/TypeScript.
 
 ## Usage
 
-[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](TODO)
+[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-hmh6ob?file=app.ts)
 
 ```typescript
-import { TODO } from "TODO";
+import { ChkkClient, ChkkEnvironment } from '@fern-api/chkk';
 
-const TODO
+void main();
+
+async function main() {
+  const client = new ChkkClient({
+    environment: ChkkEnvironment.Production,
+    apiKey: 'CHKK_API_KEY',
+  });
+
+  const response = await client.identity.updateOrganization('orgSlug', {
+    name: 'New Organization Name',
+    logoUrl: 'https://example.com/logo.png',
+    address: '123 Main St.',
+    website: 'https://example.com',
+  });
+
+  console.log('Received response from Chkk!', response);
+}
+
 ```
 
 ## Beta status
