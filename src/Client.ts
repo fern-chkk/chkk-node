@@ -8,11 +8,9 @@ import { Identity } from "./api/resources/identity/client/Client";
 import { Subscription } from "./api/resources/subscription/client/Client";
 import { Internal } from "./api/resources/internal/client/Client";
 import { Cluster } from "./api/resources/cluster/client/Client";
-import { ScanManagement } from "./api/resources/scanManagement/client/Client";
-import { LarStatus } from "./api/resources/larStatus/client/Client";
 import { Scan } from "./api/resources/scan/client/Client";
+import { LarStatus } from "./api/resources/larStatus/client/Client";
 import { Integration } from "./api/resources/integration/client/Client";
-import { IntegrationDataPlane } from "./api/resources/integrationDataPlane/client/Client";
 import { Agent } from "./api/resources/agent/client/Client";
 
 export declare namespace ChkkClient {
@@ -49,10 +47,10 @@ export class ChkkClient {
         return (this._cluster ??= new Cluster(this.options));
     }
 
-    private _scanManagement: ScanManagement | undefined;
+    private _scan: Scan | undefined;
 
-    public get scanManagement(): ScanManagement {
-        return (this._scanManagement ??= new ScanManagement(this.options));
+    public get scan(): Scan {
+        return (this._scan ??= new Scan(this.options));
     }
 
     private _larStatus: LarStatus | undefined;
@@ -61,22 +59,10 @@ export class ChkkClient {
         return (this._larStatus ??= new LarStatus(this.options));
     }
 
-    private _scan: Scan | undefined;
-
-    public get scan(): Scan {
-        return (this._scan ??= new Scan(this.options));
-    }
-
     private _integration: Integration | undefined;
 
     public get integration(): Integration {
         return (this._integration ??= new Integration(this.options));
-    }
-
-    private _integrationDataPlane: IntegrationDataPlane | undefined;
-
-    public get integrationDataPlane(): IntegrationDataPlane {
-        return (this._integrationDataPlane ??= new IntegrationDataPlane(this.options));
     }
 
     private _agent: Agent | undefined;

@@ -255,7 +255,7 @@ export class Cluster {
     /**
      * ???
      */
-    public async unnamedOperation0(clusterId: string): Promise<Chkk.ListClusterScansResponse> {
+    public async getAllWithArsigs(clusterId: string): Promise<Chkk.ListClusterScansResponse> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `clusters/${clusterId}/arsigs`),
             method: "GET",

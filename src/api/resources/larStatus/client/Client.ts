@@ -22,7 +22,7 @@ export class LarStatus {
     /**
      * List the status of all LARs for a cluster
      */
-    public async getAllLaRsStatus(clusterId: string): Promise<Chkk.ListLaRsStatusResponse> {
+    public async getAll(clusterId: string): Promise<Chkk.ListLaRsStatusResponse> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `clusters/${clusterId}/lars/status`),
             method: "GET",

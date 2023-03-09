@@ -1,1 +1,1 @@
-export * as proxyAmplitudeEvent from "./proxyAmplitudeEvent";
+export * as createProxyAmplitudeEvent from "./createProxyAmplitudeEvent";

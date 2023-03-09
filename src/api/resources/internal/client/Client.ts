@@ -22,7 +22,7 @@ export class Internal {
     /**
      * Endpoint for the Amplitude tunnel used by the web apps to report analytics.
      */
-    public async proxyAmplitudeEvent(request: Chkk.AmplitudeAnalyticsReport): Promise<Record<string, unknown>> {
+    public async createProxyAmplitudeEvent(request: Chkk.AmplitudeAnalyticsReport): Promise<Record<string, unknown>> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "chkk-analytics"),
             method: "POST",
@@ -32,8 +32,8 @@ export class Internal {
             body: await serializers.AmplitudeAnalyticsReport.jsonOrThrow(request),
         });
         if (_response.ok) {
-            return await serializers.internal.proxyAmplitudeEvent.Response.parseOrThrow(
-                _response.body as serializers.internal.proxyAmplitudeEvent.Response.Raw,
+            return await serializers.internal.createProxyAmplitudeEvent.Response.parseOrThrow(
+                _response.body as serializers.internal.createProxyAmplitudeEvent.Response.Raw,
                 { allowUnknownKeys: true }
             );
         }
@@ -260,7 +260,7 @@ export class Internal {
      * The requests are in POST form, and consist of 3 lines with the first being a form of header containing the DSN of the report. The other lines report metadata as well as the stacktrace/breadcrumbs.
      *
      */
-    public async proxySentryReport(): Promise<void> {
+    public async createProxySentryReport(): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "sentry-proxy"),
             method: "POST",

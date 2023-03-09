@@ -22,6 +22,46 @@ export class Scan {
     /**
      * ???
      */
+    public async getAllClusterScans(clusterId: string): Promise<Chkk.ListClusterScansResponse> {
+        const _response = await core.fetcher({
+            url: urlJoin(this.options.environment, `clusters/${clusterId}/lars`),
+            method: "GET",
+            headers: {
+                Authorization: await core.Supplier.get(this.options.apiKey),
+            },
+        });
+        if (_response.ok) {
+            return await serializers.ListClusterScansResponse.parseOrThrow(
+                _response.body as serializers.ListClusterScansResponse.Raw,
+                { allowUnknownKeys: true }
+            );
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.ChkkError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.ChkkError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                });
+            case "timeout":
+                throw new errors.ChkkTimeoutError();
+            case "unknown":
+                throw new errors.ChkkError({
+                    message: _response.error.errorMessage,
+                });
+        }
+    }
+
+    /**
+     * ???
+     */
     public async getClusterRescanState(clusterId: string): Promise<Chkk.Cluster> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `clusters/${clusterId}/rescan`),
