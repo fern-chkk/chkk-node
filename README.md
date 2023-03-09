@@ -1,12 +1,8 @@
-# {Company} Node Library
+# Chkk Node Library
 
-[![npm shield](https://img.shields.io/npm/v/@fern-api/{company})](https://www.npmjs.com/package/@fern-api/{company})
+[![npm shield](https://img.shields.io/npm/v/@fern-api/chkk)](https://www.npmjs.com/package/@fern-api/chkk)
 
-The {Company} Node.js library provides access to the {Company} API from JavaScript/TypeScript.
-
-## Documentation
-
-API reference documentation is available [here](docs_url).
+The {Company} Node.js library provides access to the Chkk API from JavaScript/TypeScript.
 
 ## Usage
 
