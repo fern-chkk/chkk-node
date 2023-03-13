@@ -6,7 +6,7 @@ The Chkk Node.js library provides access to the Chkk API from JavaScript/TypeScr
 
 ## Usage
 
-[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-hmh6ob?file=app.ts)
+[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-ndrnxg?file=app.ts)
 
 ```typescript
 import { ChkkClient, ChkkEnvironment } from '@fern-api/chkk';
