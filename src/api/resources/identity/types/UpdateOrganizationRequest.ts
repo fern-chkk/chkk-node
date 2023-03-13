@@ -5,7 +5,7 @@
 /**
  * Update the details of a Chkk Organization
  */
-export interface UpdateOrganizationRequestBody {
+export interface UpdateOrganizationRequest {
     /** Display name of the Organization */
     name?: string;
     /** URL of the Organization logo */

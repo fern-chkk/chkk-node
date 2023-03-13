@@ -5,6 +5,6 @@
 /**
  * Start a scan of the provided cluster
  */
-export interface CreateScanRequestBody {
+export interface CreateScanRequest {
     clusterId: string;
 }

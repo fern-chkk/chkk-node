@@ -22,14 +22,14 @@ export class Agent {
     /**
      * Submit status notification for an agent
      */
-    public async submitAgentStatusNotification(request: Chkk.SubmitAgentStatusNotificationRequestBody): Promise<void> {
+    public async submitAgentStatusNotification(request: Chkk.SubmitAgentStatusNotificationRequest): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "/notifications/agent-status"),
             method: "POST",
             headers: {
                 Authorization: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.SubmitAgentStatusNotificationRequestBody.jsonOrThrow(request),
+            body: await serializers.SubmitAgentStatusNotificationRequest.jsonOrThrow(request),
         });
         if (_response.ok) {
             return;

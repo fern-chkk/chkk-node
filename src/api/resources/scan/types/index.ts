@@ -1,4 +1,4 @@
-export * from "./RescanClusterRequestBody";
-export * from "./CreateClusterScanRequestBody";
-export * from "./CreateScanRequestBody";
+export * from "./RescanClusterRequest";
+export * from "./CreateClusterScanRequest";
+export * from "./CreateScanRequest";
 export * from "./CreateScanResponse";

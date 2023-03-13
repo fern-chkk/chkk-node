@@ -22,7 +22,7 @@ export class Integration {
     /**
      * List the integrations configured in the Chkk account
      */
-    public async getAll(): Promise<Chkk.ListIntegrationsResponse> {
+    public async list(): Promise<Chkk.ListIntegrationsResponse> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "integrations"),
             method: "GET",
@@ -62,14 +62,14 @@ export class Integration {
     /**
      * Create a new integration in the Chkk account
      */
-    public async create(request: Chkk.CreateIntegrationRequestBody): Promise<Chkk.Integration> {
+    public async create(request: Chkk.CreateIntegrationRequest): Promise<Chkk.Integration> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "integrations"),
             method: "POST",
             headers: {
                 Authorization: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.CreateIntegrationRequestBody.jsonOrThrow(request),
+            body: await serializers.CreateIntegrationRequest.jsonOrThrow(request),
         });
         if (_response.ok) {
             return await serializers.Integration.parseOrThrow(_response.body as serializers.Integration.Raw, {
@@ -219,14 +219,14 @@ export class Integration {
     /**
      * Update an existing integration (e.g. with new status)
      */
-    public async update(integrationId: string, request: Chkk.UpdateIntegrationRequestBody): Promise<Chkk.Integration> {
+    public async update(integrationId: string, request: Chkk.UpdateIntegrationRequest): Promise<Chkk.Integration> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `integrations/${integrationId}`),
             method: "PUT",
             headers: {
                 Authorization: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.UpdateIntegrationRequestBody.jsonOrThrow(request),
+            body: await serializers.UpdateIntegrationRequest.jsonOrThrow(request),
         });
         if (_response.ok) {
             return await serializers.Integration.parseOrThrow(_response.body as serializers.Integration.Raw, {
@@ -375,14 +375,14 @@ export class Integration {
     /**
      * ???
      */
-    public async createTicket(request: Chkk.CreateTicketRequestBody): Promise<void> {
+    public async createTicket(request: Chkk.CreateTicketRequest): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "tickets"),
             method: "POST",
             headers: {
                 Authorization: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.CreateTicketRequestBody.jsonOrThrow(request),
+            body: await serializers.CreateTicketRequest.jsonOrThrow(request),
         });
         if (_response.ok) {
             return;

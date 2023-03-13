@@ -59,7 +59,7 @@ export class Identity {
     /**
      * List all teams in the given Chkk account
      */
-    public async getAllTeams(
+    public async listTeams(
         accountSlug: string,
         request: Chkk.ListAccountTeamsRequest = {}
     ): Promise<Chkk.ListAccountTeamsResponse> {
@@ -207,7 +207,7 @@ export class Identity {
     /**
      * Add a new member to an existing Chkk Team. This creates an invitation as well as an email notification to the person added to accept the invitation (beforehand they will not be a member)
      */
-    public async addUser(accountSlug: string, teamSlug: string, request: Chkk.AddTeamMemberRequest): Promise<void> {
+    public async addMember(accountSlug: string, teamSlug: string, request: Chkk.AddTeamMemberRequest): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `accounts/${accountSlug}/teams/${teamSlug}/membership`),
             method: "POST",
@@ -245,7 +245,7 @@ export class Identity {
     /**
      * Remove a user from a Chkk team. The user won't be notified about this change.
      */
-    public async deleteUser(accountSlug: string, teamSlug: string, userId: string): Promise<void> {
+    public async deleteMember(accountSlug: string, teamSlug: string, userId: string): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `accounts/${accountSlug}/teams/${teamSlug}/membership/${userId}`),
             method: "DELETE",
@@ -362,7 +362,7 @@ export class Identity {
      */
     public async updateOrganization(
         orgSlug: string,
-        request: Chkk.UpdateOrganizationRequestBody
+        request: Chkk.UpdateOrganizationRequest
     ): Promise<Chkk.Organization> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `orgs/${orgSlug}`),
@@ -370,7 +370,7 @@ export class Identity {
             headers: {
                 Authorization: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.UpdateOrganizationRequestBody.jsonOrThrow(request),
+            body: await serializers.UpdateOrganizationRequest.jsonOrThrow(request),
         });
         if (_response.ok) {
             return await serializers.Organization.parseOrThrow(_response.body as serializers.Organization.Raw, {
@@ -403,7 +403,7 @@ export class Identity {
     /**
      * List the access tokens for the different accounts in the Chkk organization (for the calling user)
      */
-    public async getAllAccessTokens(orgSlug: string): Promise<Chkk.ListAccessTokensResponse> {
+    public async listAccessTokens(orgSlug: string): Promise<Chkk.ListAccessTokensResponse> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `orgs/${orgSlug}/tokens`),
             method: "GET",

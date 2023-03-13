@@ -4,6 +4,10 @@
 
 export interface ListAvailabilityRisksRequest {
     /**
+     * The filter can include one or multiple clauses separated by commas, e.g., severity:low, need_attention:true, category:defects
+     */
+    filter?: string | string[];
+    /**
      * The number of entries returned in a single call.
      */
     pageSize?: number;

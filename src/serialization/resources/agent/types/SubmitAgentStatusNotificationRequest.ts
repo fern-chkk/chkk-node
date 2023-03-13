@@ -6,9 +6,9 @@ import * as serializers from "../../..";
 import { Chkk } from "@fern-api/chkk";
 import * as core from "../../../../core";
 
-export const SubmitAgentStatusNotificationRequestBody: core.serialization.ObjectSchema<
-    serializers.SubmitAgentStatusNotificationRequestBody.Raw,
-    Chkk.SubmitAgentStatusNotificationRequestBody
+export const SubmitAgentStatusNotificationRequest: core.serialization.ObjectSchema<
+    serializers.SubmitAgentStatusNotificationRequest.Raw,
+    Chkk.SubmitAgentStatusNotificationRequest
 > = core.serialization.object({
     resourceId: core.serialization.property("resource_id", core.serialization.string()),
     components: core.serialization.list(
@@ -16,7 +16,7 @@ export const SubmitAgentStatusNotificationRequestBody: core.serialization.Object
     ),
 });
 
-export declare namespace SubmitAgentStatusNotificationRequestBody {
+export declare namespace SubmitAgentStatusNotificationRequest {
     interface Raw {
         resource_id: string;
         components: serializers.AgentComponent.Raw[];

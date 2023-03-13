@@ -1,6 +1,6 @@
 export * from "./AmplitudeAnalyticsReport";
 export * from "./AmplitudeAnalyticsReportLogDetails";
-export * from "./SubmitFeedbackRequestBody";
+export * from "./SubmitFeedbackRequest";
 export * from "./SubmitFeedbackResponse";
 export * from "./QuickStartResponse";
 export * from "./QuickStartResponseItem";

@@ -7,6 +7,6 @@ import { Chkk } from "@fern-api/chkk";
 /**
  * ???
  */
-export interface DeactivateClusterRequestBody {
+export interface DeactivateClusterRequest {
     status: Chkk.ClusterStatus;
 }

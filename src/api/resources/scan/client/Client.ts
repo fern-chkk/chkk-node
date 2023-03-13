@@ -22,7 +22,7 @@ export class Scan {
     /**
      * ???
      */
-    public async getAllClusterScans(clusterId: string): Promise<Chkk.ListClusterScansResponse> {
+    public async listClusterScans(clusterId: string): Promise<Chkk.ListClusterScansResponse> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `clusters/${clusterId}/lars`),
             method: "GET",
@@ -101,14 +101,14 @@ export class Scan {
     /**
      * ???
      */
-    public async createRescanCluster(clusterId: string, request: Chkk.RescanClusterRequestBody): Promise<Chkk.Cluster> {
+    public async createRescanCluster(clusterId: string, request: Chkk.RescanClusterRequest): Promise<Chkk.Cluster> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `clusters/${clusterId}/rescan`),
             method: "POST",
             headers: {
                 Authorization: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.RescanClusterRequestBody.jsonOrThrow(request),
+            body: await serializers.RescanClusterRequest.jsonOrThrow(request),
         });
         if (_response.ok) {
             return await serializers.Cluster.parseOrThrow(_response.body as serializers.Cluster.Raw, {
@@ -141,17 +141,14 @@ export class Scan {
     /**
      * ???
      */
-    public async createClusterScan(
-        clusterId: string,
-        request: Chkk.CreateClusterScanRequestBody
-    ): Promise<Chkk.Cluster> {
+    public async createClusterScan(clusterId: string, request: Chkk.CreateClusterScanRequest): Promise<Chkk.Cluster> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `clusters/${clusterId}/scan`),
             method: "POST",
             headers: {
                 Authorization: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.CreateClusterScanRequestBody.jsonOrThrow(request),
+            body: await serializers.CreateClusterScanRequest.jsonOrThrow(request),
         });
         if (_response.ok) {
             return await serializers.Cluster.parseOrThrow(_response.body as serializers.Cluster.Raw, {
@@ -184,7 +181,7 @@ export class Scan {
     /**
      * ???
      */
-    public async getAllScans(): Promise<Chkk.ListClusterScansResponse> {
+    public async list(): Promise<Chkk.ListClusterScansResponse> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "scans"),
             method: "GET",
@@ -224,14 +221,14 @@ export class Scan {
     /**
      * ???
      */
-    public async createScan(request: Chkk.CreateScanRequestBody): Promise<Chkk.CreateScanResponse> {
+    public async create(request: Chkk.CreateScanRequest): Promise<Chkk.CreateScanResponse> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "scans"),
             method: "POST",
             headers: {
                 Authorization: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.CreateScanRequestBody.jsonOrThrow(request),
+            body: await serializers.CreateScanRequest.jsonOrThrow(request),
         });
         if (_response.ok) {
             return await serializers.CreateScanResponse.parseOrThrow(

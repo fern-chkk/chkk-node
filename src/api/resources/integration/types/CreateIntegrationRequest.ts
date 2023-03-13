@@ -7,7 +7,7 @@ import { Chkk } from "@fern-api/chkk";
 /**
  * ???
  */
-export interface CreateIntegrationRequestBody {
+export interface CreateIntegrationRequest {
     /** ??? */
     integrationName: string;
     integrationType: Chkk.IntegrationType;

@@ -6,9 +6,9 @@ import * as serializers from "../../..";
 import { Chkk } from "@fern-api/chkk";
 import * as core from "../../../../core";
 
-export const CreateIntegrationRequestBody: core.serialization.ObjectSchema<
-    serializers.CreateIntegrationRequestBody.Raw,
-    Chkk.CreateIntegrationRequestBody
+export const CreateIntegrationRequest: core.serialization.ObjectSchema<
+    serializers.CreateIntegrationRequest.Raw,
+    Chkk.CreateIntegrationRequest
 > = core.serialization.object({
     integrationName: core.serialization.property("integration_name", core.serialization.string()),
     integrationType: core.serialization.property(
@@ -26,7 +26,7 @@ export const CreateIntegrationRequestBody: core.serialization.ObjectSchema<
     ),
 });
 
-export declare namespace CreateIntegrationRequestBody {
+export declare namespace CreateIntegrationRequest {
     interface Raw {
         integration_name: string;
         integration_type: serializers.IntegrationType.Raw;

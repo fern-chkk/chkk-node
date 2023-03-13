@@ -6,9 +6,9 @@ import * as serializers from "../../..";
 import { Chkk } from "@fern-api/chkk";
 import * as core from "../../../../core";
 
-export const CreateSubscriptionRequestBody: core.serialization.ObjectSchema<
-    serializers.CreateSubscriptionRequestBody.Raw,
-    Chkk.CreateSubscriptionRequestBody
+export const CreateSubscriptionRequest: core.serialization.ObjectSchema<
+    serializers.CreateSubscriptionRequest.Raw,
+    Chkk.CreateSubscriptionRequest
 > = core.serialization.object({
     subscriptionType: core.serialization.property(
         "subscription_type",
@@ -17,7 +17,7 @@ export const CreateSubscriptionRequestBody: core.serialization.ObjectSchema<
     awsRegistrationToken: core.serialization.property("aws_registration_token", core.serialization.string().optional()),
 });
 
-export declare namespace CreateSubscriptionRequestBody {
+export declare namespace CreateSubscriptionRequest {
     interface Raw {
         subscription_type: serializers.SubscriptionType.Raw;
         aws_registration_token?: string | null;

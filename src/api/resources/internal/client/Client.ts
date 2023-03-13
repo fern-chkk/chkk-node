@@ -63,14 +63,14 @@ export class Internal {
     /**
      * Endpoint for reporting feedback about Chkk of different nature - user sign-up requests, k8s questions or general feedback
      */
-    public async submitFeedback(request: Chkk.SubmitFeedbackRequestBody): Promise<Chkk.SubmitFeedbackResponse> {
+    public async submitFeedback(request: Chkk.SubmitFeedbackRequest): Promise<Chkk.SubmitFeedbackResponse> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "feedbacks"),
             method: "POST",
             headers: {
                 Authorization: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.SubmitFeedbackRequestBody.jsonOrThrow(request),
+            body: await serializers.SubmitFeedbackRequest.jsonOrThrow(request),
         });
         if (_response.ok) {
             return await serializers.SubmitFeedbackResponse.parseOrThrow(
@@ -297,11 +297,21 @@ export class Internal {
     /**
      * List the AvailabilityRisks in the account, filtered by the query parameters
      */
-    public async getAllAvailabilityRisks(
+    public async listAvailabilityRisks(
         request: Chkk.ListAvailabilityRisksRequest = {}
     ): Promise<Chkk.ListAvailabilityRisksResponse> {
-        const { pageSize, continuationToken } = request;
+        const { filter, pageSize, continuationToken } = request;
         const _queryParams = new URLSearchParams();
+        if (filter != null) {
+            if (Array.isArray(filter)) {
+                for (const _item of filter) {
+                    _queryParams.append("filter", _item);
+                }
+            } else {
+                _queryParams.append("filter", filter);
+            }
+        }
+
         if (pageSize != null) {
             _queryParams.append("pageSize", pageSize.toString());
         }
@@ -353,8 +363,26 @@ export class Internal {
     public async getAvailabilityRisksSummary(
         request: Chkk.GetAvailabilityRisksSummaryRequest
     ): Promise<Chkk.AvailabilityRisksSummary> {
-        const { count } = request;
+        const { groupBy, filter, count } = request;
         const _queryParams = new URLSearchParams();
+        if (Array.isArray(groupBy)) {
+            for (const _item of groupBy) {
+                _queryParams.append("group_by", _item);
+            }
+        } else {
+            _queryParams.append("group_by", groupBy);
+        }
+
+        if (filter != null) {
+            if (Array.isArray(filter)) {
+                for (const _item of filter) {
+                    _queryParams.append("filter", _item);
+                }
+            } else {
+                _queryParams.append("filter", filter);
+            }
+        }
+
         _queryParams.append("count", count);
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "availability_risks/summary"),
@@ -400,8 +428,18 @@ export class Internal {
         availabilityRiskId: string,
         request: Chkk.GetAvailabilityRiskAffectedResourceRequest = {}
     ): Promise<Chkk.ListAffectedResourcesResponse> {
-        const { pageSize, continuationToken } = request;
+        const { filter, pageSize, continuationToken } = request;
         const _queryParams = new URLSearchParams();
+        if (filter != null) {
+            if (Array.isArray(filter)) {
+                for (const _item of filter) {
+                    _queryParams.append("filter", _item);
+                }
+            } else {
+                _queryParams.append("filter", filter);
+            }
+        }
+
         if (pageSize != null) {
             _queryParams.append("pageSize", pageSize.toString());
         }

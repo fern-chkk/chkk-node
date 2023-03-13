@@ -6,9 +6,9 @@ import * as serializers from "../../..";
 import { Chkk } from "@fern-api/chkk";
 import * as core from "../../../../core";
 
-export const RescanClusterRequestBody: core.serialization.ObjectSchema<
-    serializers.RescanClusterRequestBody.Raw,
-    Chkk.RescanClusterRequestBody
+export const RescanClusterRequest: core.serialization.ObjectSchema<
+    serializers.RescanClusterRequest.Raw,
+    Chkk.RescanClusterRequest
 > = core.serialization.object({
     rescanStatus: core.serialization.property(
         "rescan_status",
@@ -16,7 +16,7 @@ export const RescanClusterRequestBody: core.serialization.ObjectSchema<
     ),
 });
 
-export declare namespace RescanClusterRequestBody {
+export declare namespace RescanClusterRequest {
     interface Raw {
         rescan_status: serializers.ClusterRescan.Raw;
     }

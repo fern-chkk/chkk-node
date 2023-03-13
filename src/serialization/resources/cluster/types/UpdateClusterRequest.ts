@@ -6,9 +6,9 @@ import * as serializers from "../../..";
 import { Chkk } from "@fern-api/chkk";
 import * as core from "../../../../core";
 
-export const UpdateClusterRequestBody: core.serialization.ObjectSchema<
-    serializers.UpdateClusterRequestBody.Raw,
-    Chkk.UpdateClusterRequestBody
+export const UpdateClusterRequest: core.serialization.ObjectSchema<
+    serializers.UpdateClusterRequest.Raw,
+    Chkk.UpdateClusterRequest
 > = core.serialization.object({
     name: core.serialization.string().optional(),
     region: core.serialization.string().optional(),
@@ -37,7 +37,7 @@ export const UpdateClusterRequestBody: core.serialization.ObjectSchema<
     ),
 });
 
-export declare namespace UpdateClusterRequestBody {
+export declare namespace UpdateClusterRequest {
     interface Raw {
         name?: string | null;
         region?: string | null;

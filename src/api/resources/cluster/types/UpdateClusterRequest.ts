@@ -7,7 +7,7 @@ import { Chkk } from "@fern-api/chkk";
 /**
  * ???
  */
-export interface UpdateClusterRequestBody {
+export interface UpdateClusterRequest {
     name?: string;
     region?: string;
     /** whether this cluster should be considered to be part of production or not */

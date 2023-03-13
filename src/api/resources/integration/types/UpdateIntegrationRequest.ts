@@ -7,6 +7,8 @@ import { Chkk } from "@fern-api/chkk";
 /**
  * ???
  */
-export interface RescanClusterRequestBody {
-    rescanStatus: Chkk.ClusterRescan;
+export interface UpdateIntegrationRequest {
+    /** ??? */
+    integrationName: string;
+    status?: Chkk.IntegrationStatus;
 }

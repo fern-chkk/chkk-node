@@ -22,7 +22,7 @@ export class Subscription {
     /**
      * Retrieve all the subscriptions associated with a Chkk account
      */
-    public async getAll(accountSlug: string): Promise<Chkk.ListSubscriptionsResponse> {
+    public async list(accountSlug: string): Promise<Chkk.ListSubscriptionsResponse> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `/accounts/${accountSlug}/subscriptions`),
             method: "GET",
@@ -64,7 +64,7 @@ export class Subscription {
      */
     public async create(
         accountSlug: string,
-        request: Chkk.CreateSubscriptionRequestBody
+        request: Chkk.CreateSubscriptionRequest
     ): Promise<Chkk.CreateSubscriptionResponse> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `/accounts/${accountSlug}/subscriptions`),
@@ -72,7 +72,7 @@ export class Subscription {
             headers: {
                 Authorization: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.CreateSubscriptionRequestBody.jsonOrThrow(request),
+            body: await serializers.CreateSubscriptionRequest.jsonOrThrow(request),
         });
         if (_response.ok) {
             return await serializers.CreateSubscriptionResponse.parseOrThrow(

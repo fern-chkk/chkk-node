@@ -4,6 +4,14 @@
 
 export interface GetAvailabilityRisksSummaryRequest {
     /**
+     * group_by can be repeated. Only category is supported value for the group_by clause.
+     */
+    groupBy: string | string[];
+    /**
+     * The filter can include one or multiple clauses separated by commas, e.g., severity:low, need_attention:true, category:defects
+     */
+    filter?: string | string[];
+    /**
      * summary operation will apply filter and group_by clauses, and then count distinct values in the field specified for count parameter. Possible values are affected_resources, availability_risks
      */
     count: string;

@@ -6,14 +6,14 @@ import * as serializers from "../../..";
 import { Chkk } from "@fern-api/chkk";
 import * as core from "../../../../core";
 
-export const IgnoreLarRequestBody: core.serialization.ObjectSchema<
-    serializers.IgnoreLarRequestBody.Raw,
-    Chkk.IgnoreLarRequestBody
+export const IgnoreLarRequest: core.serialization.ObjectSchema<
+    serializers.IgnoreLarRequest.Raw,
+    Chkk.IgnoreLarRequest
 > = core.serialization.object({
     ignore: core.serialization.boolean(),
 });
 
-export declare namespace IgnoreLarRequestBody {
+export declare namespace IgnoreLarRequest {
     interface Raw {
         ignore: boolean;
     }

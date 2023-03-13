@@ -10,7 +10,7 @@ export const ChkkEnvironment = {
     /**
      * Prod AWS US-West-2
      */
-    ProductionAwsUsWest2: "https://api.us-west-2.aws.chkk.io/v1",
+    ProductionAwsUsWest: "https://api.us-west-2.aws.chkk.io/v1",
 } as const;
 
-export type ChkkEnvironment = typeof ChkkEnvironment.Production | typeof ChkkEnvironment.ProductionAwsUsWest2;
+export type ChkkEnvironment = typeof ChkkEnvironment.Production | typeof ChkkEnvironment.ProductionAwsUsWest;

@@ -6,14 +6,14 @@ import * as serializers from "../../..";
 import { Chkk } from "@fern-api/chkk";
 import * as core from "../../../../core";
 
-export const AcknowledgeLarRequestBody: core.serialization.ObjectSchema<
-    serializers.AcknowledgeLarRequestBody.Raw,
-    Chkk.AcknowledgeLarRequestBody
+export const AcknowledgeLarRequest: core.serialization.ObjectSchema<
+    serializers.AcknowledgeLarRequest.Raw,
+    Chkk.AcknowledgeLarRequest
 > = core.serialization.object({
     acknowledge: core.serialization.boolean(),
 });
 
-export declare namespace AcknowledgeLarRequestBody {
+export declare namespace AcknowledgeLarRequest {
     interface Raw {
         acknowledge: boolean;
     }

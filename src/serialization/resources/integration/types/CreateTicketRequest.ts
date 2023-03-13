@@ -6,9 +6,9 @@ import * as serializers from "../../..";
 import { Chkk } from "@fern-api/chkk";
 import * as core from "../../../../core";
 
-export const CreateTicketRequestBody: core.serialization.ObjectSchema<
-    serializers.CreateTicketRequestBody.Raw,
-    Chkk.CreateTicketRequestBody
+export const CreateTicketRequest: core.serialization.ObjectSchema<
+    serializers.CreateTicketRequest.Raw,
+    Chkk.CreateTicketRequest
 > = core.serialization.object({
     summary: core.serialization.string(),
     description: core.serialization.string(),
@@ -33,7 +33,7 @@ export const CreateTicketRequestBody: core.serialization.ObjectSchema<
     ),
 });
 
-export declare namespace CreateTicketRequestBody {
+export declare namespace CreateTicketRequest {
     interface Raw {
         summary: string;
         description: string;

@@ -4,6 +4,10 @@
 
 export interface GetAvailabilityRiskAffectedResourceRequest {
     /**
+     * The filter can include one or multiple clauses separated by commas, e.g., type:cluster, cluster_id:k8scl_1234 etc.
+     */
+    filter?: string | string[];
+    /**
      * The number of entries returned in a single call.
      */
     pageSize?: number;

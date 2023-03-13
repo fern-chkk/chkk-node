@@ -6,9 +6,9 @@ import * as serializers from "../../..";
 import { Chkk } from "@fern-api/chkk";
 import * as core from "../../../../core";
 
-export const UpdateOrganizationRequestBody: core.serialization.ObjectSchema<
-    serializers.UpdateOrganizationRequestBody.Raw,
-    Chkk.UpdateOrganizationRequestBody
+export const UpdateOrganizationRequest: core.serialization.ObjectSchema<
+    serializers.UpdateOrganizationRequest.Raw,
+    Chkk.UpdateOrganizationRequest
 > = core.serialization.object({
     name: core.serialization.string().optional(),
     logoUrl: core.serialization.property("logo_url", core.serialization.string().optional()),
@@ -16,7 +16,7 @@ export const UpdateOrganizationRequestBody: core.serialization.ObjectSchema<
     website: core.serialization.string().optional(),
 });
 
-export declare namespace UpdateOrganizationRequestBody {
+export declare namespace UpdateOrganizationRequest {
     interface Raw {
         name?: string | null;
         logo_url?: string | null;

@@ -22,7 +22,7 @@ export class LarStatus {
     /**
      * List the status of all LARs for a cluster
      */
-    public async getAll(clusterId: string): Promise<Chkk.ListLaRsStatusResponse> {
+    public async list(clusterId: string): Promise<Chkk.ListLaRsStatusResponse> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `clusters/${clusterId}/lars/status`),
             method: "GET",
@@ -101,14 +101,14 @@ export class LarStatus {
     /**
      * Ignore a specific LAR
      */
-    public async ignore(clusterId: string, larId: string, request: Chkk.IgnoreLarRequestBody): Promise<Chkk.LarStatus> {
+    public async ignore(clusterId: string, larId: string, request: Chkk.IgnoreLarRequest): Promise<Chkk.LarStatus> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `clusters/${clusterId}/lars/status/${larId}/ignore`),
             method: "POST",
             headers: {
                 Authorization: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.IgnoreLarRequestBody.jsonOrThrow(request),
+            body: await serializers.IgnoreLarRequest.jsonOrThrow(request),
         });
         if (_response.ok) {
             return await serializers.LarStatus.parseOrThrow(_response.body as serializers.LarStatus.Raw, {
@@ -144,7 +144,7 @@ export class LarStatus {
     public async acknowledge(
         clusterId: string,
         larId: string,
-        request: Chkk.AcknowledgeLarRequestBody
+        request: Chkk.AcknowledgeLarRequest
     ): Promise<Chkk.LarStatus> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `clusters/${clusterId}/lars/status/${larId}/acknowledge`),
@@ -152,7 +152,7 @@ export class LarStatus {
             headers: {
                 Authorization: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.AcknowledgeLarRequestBody.jsonOrThrow(request),
+            body: await serializers.AcknowledgeLarRequest.jsonOrThrow(request),
         });
         if (_response.ok) {
             return await serializers.LarStatus.parseOrThrow(_response.body as serializers.LarStatus.Raw, {

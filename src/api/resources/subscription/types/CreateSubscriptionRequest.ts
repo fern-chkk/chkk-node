@@ -4,7 +4,7 @@
 
 import { Chkk } from "@fern-api/chkk";
 
-export interface CreateSubscriptionRequestBody {
+export interface CreateSubscriptionRequest {
     subscriptionType: Chkk.SubscriptionType;
     /** The registration token as vended by the AWS Marketplace */
     awsRegistrationToken?: string;

@@ -4,7 +4,7 @@
 
 import { Chkk } from "@fern-api/chkk";
 
-export interface SubmitAgentStatusNotificationRequestBody {
+export interface SubmitAgentStatusNotificationRequest {
     /** The ID of the resource that the notification is about. */
     resourceId: string;
     /** List of components reported as part of the notification. */

@@ -6,16 +6,16 @@ import * as serializers from "../../..";
 import { Chkk } from "@fern-api/chkk";
 import * as core from "../../../../core";
 
-export const CreateClusterScanRequestBody: core.serialization.ObjectSchema<
-    serializers.CreateClusterScanRequestBody.Raw,
-    Chkk.CreateClusterScanRequestBody
+export const CreateClusterScanRequest: core.serialization.ObjectSchema<
+    serializers.CreateClusterScanRequest.Raw,
+    Chkk.CreateClusterScanRequest
 > = core.serialization.object({
     clusterId: core.serialization.property("cluster_id", core.serialization.string()),
     userToken: core.serialization.property("user_token", core.serialization.string()),
     rescanStatus: core.serialization.property("rescan_status", core.serialization.string()),
 });
 
-export declare namespace CreateClusterScanRequestBody {
+export declare namespace CreateClusterScanRequest {
     interface Raw {
         cluster_id: string;
         user_token: string;

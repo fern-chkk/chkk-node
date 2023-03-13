@@ -7,7 +7,7 @@ import { Chkk } from "@fern-api/chkk";
 /**
  * ???
  */
-export interface CreateTicketRequestBody {
+export interface CreateTicketRequest {
     summary: string;
     description: string;
     assigneeName: string;

@@ -10,7 +10,7 @@ export * from "./LoginResponse";
 export * from "./Organization";
 export * from "./OrganizationStatus";
 export * from "./AccountAccessToken";
-export * from "./UpdateOrganizationRequestBody";
+export * from "./UpdateOrganizationRequest";
 export * from "./ListAccessTokensResponse";
 export * from "./AccessToken";
 export * from "./GetIngestionTokenResponse";

@@ -6,15 +6,15 @@ import * as serializers from "../../..";
 import { Chkk } from "@fern-api/chkk";
 import * as core from "../../../../core";
 
-export const UpdateIntegrationRequestBody: core.serialization.ObjectSchema<
-    serializers.UpdateIntegrationRequestBody.Raw,
-    Chkk.UpdateIntegrationRequestBody
+export const UpdateIntegrationRequest: core.serialization.ObjectSchema<
+    serializers.UpdateIntegrationRequest.Raw,
+    Chkk.UpdateIntegrationRequest
 > = core.serialization.object({
     integrationName: core.serialization.property("integration_name", core.serialization.string()),
     status: core.serialization.lazy(async () => (await import("../../..")).IntegrationStatus).optional(),
 });
 
-export declare namespace UpdateIntegrationRequestBody {
+export declare namespace UpdateIntegrationRequest {
     interface Raw {
         integration_name: string;
         status?: serializers.IntegrationStatus.Raw | null;

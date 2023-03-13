@@ -5,7 +5,7 @@
 /**
  * request from the collector to trigger the processing of a new scan
  */
-export interface CreateClusterScanRequestBody {
+export interface CreateClusterScanRequest {
     clusterId: string;
     userToken: string;
     rescanStatus: string;

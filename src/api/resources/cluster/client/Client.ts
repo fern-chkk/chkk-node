@@ -59,7 +59,7 @@ export class Cluster {
     /**
      * ???
      */
-    public async getAll(): Promise<Chkk.ListClustersResponse> {
+    public async list(): Promise<Chkk.ListClustersResponse> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "clusters"),
             method: "GET",
@@ -99,14 +99,14 @@ export class Cluster {
     /**
      * ???
      */
-    public async create(request: Chkk.CreateClusterRequestBody): Promise<Chkk.Cluster> {
+    public async create(request: Chkk.CreateClusterRequest): Promise<Chkk.Cluster> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, "clusters"),
             method: "POST",
             headers: {
                 Authorization: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.CreateClusterRequestBody.jsonOrThrow(request),
+            body: await serializers.CreateClusterRequest.jsonOrThrow(request),
         });
         if (_response.ok) {
             return await serializers.Cluster.parseOrThrow(_response.body as serializers.Cluster.Raw, {
@@ -178,14 +178,14 @@ export class Cluster {
     /**
      * ???
      */
-    public async update(clusterId: string, request: Chkk.UpdateClusterRequestBody): Promise<Chkk.Cluster> {
+    public async update(clusterId: string, request: Chkk.UpdateClusterRequest): Promise<Chkk.Cluster> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `clusters/${clusterId}`),
             method: "PUT",
             headers: {
                 Authorization: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.UpdateClusterRequestBody.jsonOrThrow(request),
+            body: await serializers.UpdateClusterRequest.jsonOrThrow(request),
         });
         if (_response.ok) {
             return await serializers.Cluster.parseOrThrow(_response.body as serializers.Cluster.Raw, {
@@ -255,7 +255,7 @@ export class Cluster {
     /**
      * ???
      */
-    public async getAllWithArsigs(clusterId: string): Promise<Chkk.ListClusterScansResponse> {
+    public async listWithArsigs(clusterId: string): Promise<Chkk.ListClusterScansResponse> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `clusters/${clusterId}/arsigs`),
             method: "GET",
@@ -295,14 +295,14 @@ export class Cluster {
     /**
      * ???
      */
-    public async deactivate(clusterId: string, request: Chkk.DeactivateClusterRequestBody): Promise<Chkk.Cluster> {
+    public async deactivate(clusterId: string, request: Chkk.DeactivateClusterRequest): Promise<Chkk.Cluster> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment, `clusters/${clusterId}/deactivate`),
             method: "POST",
             headers: {
                 Authorization: await core.Supplier.get(this.options.apiKey),
             },
-            body: await serializers.DeactivateClusterRequestBody.jsonOrThrow(request),
+            body: await serializers.DeactivateClusterRequest.jsonOrThrow(request),
         });
         if (_response.ok) {
             return await serializers.Cluster.parseOrThrow(_response.body as serializers.Cluster.Raw, {

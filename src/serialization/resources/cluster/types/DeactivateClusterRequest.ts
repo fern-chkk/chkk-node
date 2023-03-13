@@ -6,14 +6,14 @@ import * as serializers from "../../..";
 import { Chkk } from "@fern-api/chkk";
 import * as core from "../../../../core";
 
-export const DeactivateClusterRequestBody: core.serialization.ObjectSchema<
-    serializers.DeactivateClusterRequestBody.Raw,
-    Chkk.DeactivateClusterRequestBody
+export const DeactivateClusterRequest: core.serialization.ObjectSchema<
+    serializers.DeactivateClusterRequest.Raw,
+    Chkk.DeactivateClusterRequest
 > = core.serialization.object({
     status: core.serialization.lazy(async () => (await import("../../..")).ClusterStatus),
 });
 
-export declare namespace DeactivateClusterRequestBody {
+export declare namespace DeactivateClusterRequest {
     interface Raw {
         status: serializers.ClusterStatus.Raw;
     }

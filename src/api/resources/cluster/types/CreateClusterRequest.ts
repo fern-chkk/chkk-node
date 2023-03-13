@@ -7,7 +7,7 @@ import { Chkk } from "@fern-api/chkk";
 /**
  * ???
  */
-export interface CreateClusterRequestBody {
+export interface CreateClusterRequest {
     name?: string;
     internalK8SRef: string;
     region: string;

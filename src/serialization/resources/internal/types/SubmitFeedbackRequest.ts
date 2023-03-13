@@ -6,16 +6,16 @@ import * as serializers from "../../..";
 import { Chkk } from "@fern-api/chkk";
 import * as core from "../../../../core";
 
-export const SubmitFeedbackRequestBody: core.serialization.ObjectSchema<
-    serializers.SubmitFeedbackRequestBody.Raw,
-    Chkk.SubmitFeedbackRequestBody
+export const SubmitFeedbackRequest: core.serialization.ObjectSchema<
+    serializers.SubmitFeedbackRequest.Raw,
+    Chkk.SubmitFeedbackRequest
 > = core.serialization.object({
     title: core.serialization.string(),
     details: core.serialization.string(),
     userEmail: core.serialization.property("user_email", core.serialization.string()),
 });
 
-export declare namespace SubmitFeedbackRequestBody {
+export declare namespace SubmitFeedbackRequest {
     interface Raw {
         title: string;
         details: string;
